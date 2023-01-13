@@ -25,4 +25,16 @@
         android:name="com.aplikasi.apptokosi01.AboutFragment"
         android:label="fragment_about"
         tools:layout="@layout/fragment_about" />
+    <fragment
+        android:id="@+id/bayarFragment"
+        android:name="com.aplikasi.apptokosi01.BayarFragment"
+        android:label="fragment_bayar"
+        tools:layout="@layout/fragment_bayar" >
+        <argument
+            android:name="argsCart"
+            app:argType="com.aplikasi.apptokosi01.response.cart.Cart" />
+        <argument
+            android:name="argsTotal"
+            app:argType="string" />
+    </fragment>
 </navigation>

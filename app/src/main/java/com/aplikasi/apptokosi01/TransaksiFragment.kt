@@ -6,7 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.aplikasi.apptokosi01.adapter.ProdukAdapter
@@ -34,6 +36,8 @@ private const val ARG_PARAM2 = "param2"
 class TransaksiFragment : Fragment() {
 
     private val api by lazy { BaseRetrofit().endpoint }
+    private lateinit var my_cart : ArrayList<Cart>
+    private lateinit var total_bayar : String
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -54,6 +58,16 @@ class TransaksiFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_transaksi, container, false)
         getProduk(view)
+
+        val btnBayar = view.findViewById<Button>(R.id.btnBayar)
+        btnBayar.setOnClickListener{
+            val bundle = Bundle()
+            bundle.putParcelableArrayList("MY_CART", my_cart)
+            bundle.putString("TOTAL", total_bayar)
+
+            findNavController().navigate(R.id.bayarFragment, bundle)
+        }
+
         return view
     }
 
@@ -81,6 +95,9 @@ class TransaksiFragment : Fragment() {
                         val localeID = Locale("in", "ID")
                         val numberFormat = NumberFormat.getCurrencyInstance(localeID)
                         txtTotalBayar?.setText(numberFormat.format(total.toDouble()).toString())
+
+                        total_bayar = total
+                        my_cart = cart
 
                         Log.d("MyCart",cart.toString())
                     }
