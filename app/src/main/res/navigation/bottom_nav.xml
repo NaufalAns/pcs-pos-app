@@ -36,5 +36,20 @@
         <argument
             android:name="argsTotal"
             app:argType="string" />
+     </fragment>
+
+     <fragment
+        android:id="@+id/produkFormFragment"
+        android:name="com.aplikasi.apptokosi01.ProdukFormFragment"
+        android:label="fragment_produk_form"
+        tools:layout="@layout/fragment_produk_form" >
+        <argument
+            android:name="argsProduk"
+            app:argType="com.aplikasi.apptokosi01.response.produk.Produk"
+            app:nullable="true" />
+        <argument
+            android:name="argsTambah"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>
