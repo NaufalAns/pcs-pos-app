@@ -43,5 +43,6 @@ class ProdukAdapter(val listProduk: List<Produk>):RecyclerView.Adapter<ProdukAda
         val txtNamaProduk = itemViem.findViewById(R.id.txtNamaProduk) as TextView
         val txtHarga = itemViem.findViewById(R.id.txtHarga) as TextView
         val btnDelete = itemViem.findViewById(R.id.btnDelete) as ImageButton
+        val btnEdit = itemViem.findViewById(R.id.btnEdit) as ImageButton
     }
 }
