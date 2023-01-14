@@ -34,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         val btnLogin = findViewById(R.id.btnLogin) as Button
-        val txtEmail = findViewById(R.id.txtEmail) as TextInputEditText
+        val txtEmail = findViewById(R.id.txtFormNama) as TextInputEditText
         val txtPassword = findViewById(R.id.txtPassword) as TextInputEditText
 
         btnLogin.setOnClickListener {
@@ -45,22 +45,23 @@ class LoginActivity : AppCompatActivity() {
                     call: Call<LoginResponse>,
                     response: Response<LoginResponse>
                 ) {
-                    val correct = response.body()!!.success
-                    if(correct){
+                    if(response.isSuccessful){
                         val token = response.body()!!.data.token
                         sessionManager.saveString("TOKEN","Bearer "+token)
                         sessionManager.saveBoolean("LOGIN_STATUS",true)
+                        sessionManager.saveString("ADMIN_ID",response.body()!!.data.admin.id.toString())
 
                         val moveIntent = Intent(this@LoginActivity,MainActivity::class.java)
                         startActivity(moveIntent)
                         finish()
 
-                        Toast.makeText(applicationContext,"Password Benar",Toast.LENGTH_LONG).show()
+                        Toast.makeText(applicationContext,"Berhasil Login",Toast.LENGTH_LONG).show()
                     }else{
-                        Toast.makeText(applicationContext,"Password salah",Toast.LENGTH_LONG).show()
+                        Toast.makeText(applicationContext,"Username atau password salah!",Toast.LENGTH_LONG).show()
                     }
                 }
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                    Toast.makeText(applicationContext,"Username atau password salah!",Toast.LENGTH_LONG).show()
                     Log.e("LoginError",t.toString())
                 }
             })
