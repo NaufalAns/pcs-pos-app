@@ -54,10 +54,9 @@ class BayarFragment : Fragment() {
             }
 
             override fun afterTextChanged(p0: Editable?) {
-                var kembalian: Int = 0
                 if(txtPenerimaan.text.toString() != ""){
                     val penerimaan:Int = txtPenerimaan.text.toString().toInt()
-                    kembalian = penerimaan - total.toString().toInt()
+                    val kembalian = penerimaan - total.toString().toInt()
 
                     if(kembalian > 0){
                         txtKembalian.setText(numberFormat.format(kembalian.toDouble()).toString())

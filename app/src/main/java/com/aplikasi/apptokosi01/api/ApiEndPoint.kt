@@ -68,4 +68,9 @@ interface ApiEndPoint {
         @Field("harga") harga : Int,
         @Field("stok") stok : Int,
     ):Call<ProdukResponsePost>
+    @GET("transaksi_bulan_ini")
+    fun getTransaksi(
+        @Header("Authorization") token: String
+    ): Call<TransaksiResponse>
+
 }
