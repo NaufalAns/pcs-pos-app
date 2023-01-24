@@ -23,18 +23,35 @@ interface ApiEndPoint {
         @Header("Authorization") token: String
     ): Call<ProdukResponse>
 
+    @GET("produk_supplier")
+    fun getProdukSupplier(
+        @Header("Authorization") token: String
+    ): Call<ProdukResponse>
+
     @FormUrlEncoded
     @POST("transaksi")
     fun postTransaksi(
         @Header("Authorization") token : String,
         @Field("admin_id") admin_id : Int,
-        @Field("total") total : Int
+        @Field("total") total : Int,
+        @Field("type") type : String,
     ) : Call <TransaksiResponsePost>
 
     @FormUrlEncoded
     @POST("item_transaksi")
     fun postItemTransaksi(
         @Header("Authorization") token : String,
+        @Field("transaksi_id") transaksi_id : Int,
+        @Field("produk_id") produk_id : Int,
+        @Field("qty") qty : Int,
+        @Field("harga_saat_transaksi") harga_saat_transaksi : Int
+    ) : Call <ItemTransaksiResponsePost>
+
+    @FormUrlEncoded
+    @POST("item_transaksi_by_supplier")
+    fun postItemTransaksiSupplier(
+        @Header("Authorization") token : String,
+        @Field("admin_id") admin_id : Int,
         @Field("transaksi_id") transaksi_id : Int,
         @Field("produk_id") produk_id : Int,
         @Field("qty") qty : Int,
@@ -49,6 +66,7 @@ interface ApiEndPoint {
         @Field("nama") nama : String,
         @Field("harga") harga : Int,
         @Field("stok") stok : Int,
+        @Field("is_supplier") is_supplier : Int,
     ):Call<ProdukResponsePost>
 
     @FormUrlEncoded
@@ -68,6 +86,7 @@ interface ApiEndPoint {
         @Field("harga") harga : Int,
         @Field("stok") stok : Int,
     ):Call<ProdukResponsePost>
+
     @GET("transaksi_bulan_ini")
     fun getTransaksi(
         @Header("Authorization") token: String

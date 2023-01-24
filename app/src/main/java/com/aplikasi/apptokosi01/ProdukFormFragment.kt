@@ -79,7 +79,7 @@ class ProdukFormFragment : Fragment() {
                     }
                 })
             } else {
-                api.postProduk(token.toString(), adminId.toString().toInt(), txtNama.text.toString(), txtHarga.text.toString().toInt(), txtStok.text.toString().toInt()).enqueue(object :
+                api.postProduk(token.toString(), adminId.toString().toInt(), txtNama.text.toString(), txtHarga.text.toString().toInt(), txtStok.text.toString().toInt(), 0).enqueue(object :
                     Callback<ProdukResponsePost> {
                     override fun onResponse(
                         call: Call<ProdukResponsePost>,

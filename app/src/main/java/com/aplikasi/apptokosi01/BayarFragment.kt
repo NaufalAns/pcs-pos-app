@@ -73,7 +73,7 @@ class BayarFragment : Fragment() {
 
         val btnSimpanBayar = view.findViewById<Button>(R.id.btnSimpanBayar)
         btnSimpanBayar.setOnClickListener{
-            api.postTransaksi(token.toString(), adminId.toString().toInt(), total.toString().toInt()).enqueue(object : Callback<TransaksiResponsePost>{
+            api.postTransaksi(token.toString(), adminId.toString().toInt(), total.toString().toInt(), "penjualan").enqueue(object : Callback<TransaksiResponsePost>{
                 override fun onResponse(
                     call: Call<TransaksiResponsePost>,
                     response: Response<TransaksiResponsePost>

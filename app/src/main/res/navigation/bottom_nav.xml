@@ -52,4 +52,9 @@
             app:argType="string"
             app:nullable="true" />
     </fragment>
+    <fragment
+        android:id="@+id/produkSupplierFragment"
+        android:name="com.aplikasi.apptokosi01.ProdukSupplierFragment"
+        android:label="fragment_produk_supplier"
+        tools:layout="@layout/fragment_produk_supplier" />
 </navigation>

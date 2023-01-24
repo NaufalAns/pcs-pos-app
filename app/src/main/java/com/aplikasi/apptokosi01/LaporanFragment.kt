@@ -10,10 +10,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.aplikasi.apptokosi01.adapter.LaporanAdapter
-import com.aplikasi.apptokosi01.adapter.ProdukAdapter
-import com.aplikasi.apptokosi01.adapter.TransaksiAdapter
 import com.aplikasi.apptokosi01.api.BaseRetrofit
-import com.aplikasi.apptokosi01.response.produk.ProdukResponse
 import com.aplikasi.apptokosi01.response.transaksi.TransaksiResponse
 import retrofit2.Call
 import retrofit2.Callback
@@ -42,10 +39,11 @@ class LaporanFragment : Fragment() {
                 call: Call<TransaksiResponse>,
                 response: Response<TransaksiResponse>
             ) {
+                Log.d("TransaksiData",response.body().toString())
                 val rv = view.findViewById(R.id.rv_laporan) as RecyclerView
 
                 val txtTotalPendapatan = view.findViewById(R.id.txtTotalPendapatan) as TextView
-                val totalPendapatan = response.body()!!.data.total
+                val totalPendapatan = response.body()!!.data.pendapatan_bersih
 
                 val localeID = Locale("in", "ID")
                 val numberFormat = NumberFormat.getCurrencyInstance(localeID)

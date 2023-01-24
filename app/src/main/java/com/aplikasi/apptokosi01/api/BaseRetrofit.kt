@@ -16,7 +16,9 @@ class BaseRetrofit {
                 .build()
 
             val retrofit = Retrofit.Builder()
-                .baseUrl("http://pcs.donnipra.com/index.php/api_pcs/")
+//                .baseUrl("http://pcs.donnipra.com/index.php/api_pcs/")
+//                .baseUrl("http://10.0.2.2/amikom/ci-pcs/index.php/api_pcs/")
+                .baseUrl("http://192.168.233.1/amikom/ci-pcs/index.php/api_pcs/")
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
